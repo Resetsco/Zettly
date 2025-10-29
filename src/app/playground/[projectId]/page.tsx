@@ -20,6 +20,10 @@ export default function PlaygroundPage({ params }: { params: { projectId: string
   const router = useRouter();
 
   useEffect(() => {
+    if (!params.projectId) {
+      return;
+    }
+
     const fetchProject = async () => {
       setLoading(true);
       const { data, error } = await supabase
